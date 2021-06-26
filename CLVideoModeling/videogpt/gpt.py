@@ -127,9 +127,17 @@ class VideoGPT(pl.LightningModule):
         h = self.fc_in(x)
         h = self.attn_stack(h, cond, decode_step, decode_idx)
         h = self.norm(h, cond)
-        logits = self.fc_out(h)
+        logits = self.fc_out(h)  # predicted logits
 
-        # TODO (relative?) CL loss
+        # TODO (relative?) CL loss:
+        # CL cross entropy:
+        # ! w.r.t. S params
+        # S(x, targets) = 1
+        # S(x, contrastive) = 0  # contrastive can even be predicted logits (similar to gan)
+        # Likelihood maximization:
+        # ! w.r.t. logits params
+        # -log(S(x, logits))
+        # S(a,b) = attention(a) * attention(b) ?
         loss = F.cross_entropy(shift_dim(logits, -1, 1), targets)
 
         return loss, logits
