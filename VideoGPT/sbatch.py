@@ -26,6 +26,7 @@ def slurm_script_generalized():
 #SBATCH -p reserved --reservation=slerman-20210701
 #SBATCH -t 5-00:00:00 -o ./{}.log -J {}
 #SBATCH --mem=24gb 
+{}
 module load {}
 source activate env
 python3 {} {}
