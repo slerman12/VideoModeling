@@ -23,7 +23,6 @@ def slurm_script_generalized():
     return r"""#!/bin/bash
 #SBATCH {}
 {}
-#SBATCH -p reserved --reservation=slerman-20210701
 #SBATCH -t 5-00:00:00 -o ./{}.log -J {}
 #SBATCH --mem=24gb 
 {}
