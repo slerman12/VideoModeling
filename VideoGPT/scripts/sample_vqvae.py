@@ -1,8 +1,8 @@
 import argparse
 import torch
 
-from videogpt import VideoData, VideoGPT
-from videogpt.utils import save_video_grid
+from ..videogpt import VideoData, VideoGPT
+from ..videogpt.utils import save_video_grid
 
 
 parser = argparse.ArgumentParser()
