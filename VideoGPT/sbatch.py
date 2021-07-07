@@ -15,7 +15,7 @@ parser.add_argument('--biggest-gpu', action='store_true', default=False,
                     help='uses V100 GPU')
 parser.add_argument('--file', type=str, default="scripts/train_videogpt.py")
 parser.add_argument('--params', type=str, default="--vqvae ucf101_stride4x4x4 --data_path datasets/ucf101/ --gpus 4")
-parser.add_argument('--module', type=str, default="miniconda3/4.6.14")
+parser.add_argument('--module', type=str, default="anaconda3/2020.11")
 args = parser.parse_args()
 
 
