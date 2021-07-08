@@ -27,7 +27,7 @@ def slurm_script_generalized():
 #SBATCH --mem=24gb 
 {}
 module load {}
-source activate v
+conda activate v
 python3 {} {}
 """.format("-c 1" if args.cpu else "-p gpu",
            "" if args.cpu else "#SBATCH -p csxu -A cxu22_lab" if False else "#SBATCH --gres=gpu:4",
