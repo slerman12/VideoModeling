@@ -26,15 +26,14 @@ def slurm_script_generalized():
 #SBATCH -t 5-00:00:00 -o ./{}.log -J {}
 #SBATCH --mem=24gb 
 {}
-module load {}
-conda activate vid
+source /scratch/slerman/miniconda/bin/activate vid
 python3 {} {}
 """.format("-c 1" if args.cpu else "-p gpu",
            "" if args.cpu else "#SBATCH -p csxu -A cxu22_lab" if False else "#SBATCH --gres=gpu:4",
            # "#SBATCH -p csxu -A cxu22_lab" if args.cpu else "#SBATCH -p csxu -A cxu22_lab --gres=gpu",
            args.name, args.name,
            "#SBATCH -C K80" if args.bigger_gpu else "#SBATCH -C V100" if args.biggest_gpu else "",
-           args.module, args.file, args.params)
+           args.file, args.params)
 
 
 with open("sbatch_script", "w") as file:
